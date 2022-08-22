@@ -9,13 +9,13 @@ spec:
   replicas: 3
   selectors:
     matchLabels:
-      tier: backend
+      tier: backend-pod
       app: cvc
   template:
     metadata:
       name: backend
       labels:
-        tier: backend
+        tier: backend-pod
         app: cvc
       specs:
         containers:

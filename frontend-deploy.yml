@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deploy
+  labels:
+    name: frontend-deploy
+    app: cvc
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend-pod
+      app: cvc
+  template:
+    metadata:
+      name: frontend
+      labels:
+        tier: frontend-pod
+        app: cvc
+    spec:
+      containers:
+        - name: dashboard
+          image: kuunika/dashboard
+          envFrom:
+            - secretRef:
+                name: front-end-secrets
+            
