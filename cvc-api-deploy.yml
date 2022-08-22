@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deploy
+  labels:
+    name: backend-deploy
+    app: cvc
+spec:
+  replicas: 3
+  selectors:
+    matchLabels:
+      tier: backend
+      app: cvc
+  template:
+    metadata:
+      name: backend
+      labels:
+        tier: backend
+        app: cvc
+      specs:
+        containers:
+          - name: cvc-backend
+            image: kuunika/cvc-backend
+            envFrom:
+              - secretRef:
+                  name: cvc-backend-secrets
+        
