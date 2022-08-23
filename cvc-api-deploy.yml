@@ -17,7 +17,7 @@ spec:
       labels:
         tier: backend-pod
         app: cvc
-      specs:
+      spec:
         containers:
           - name: cvc-backend
             image: kuunika/cvc-backend
